@@ -2,6 +2,8 @@
 
 // import catImage from '../assets/images/cat.jpeg'
 import '../scss/styles.scss';
-import { sayHello } from './demo.js';
 
-sayHello();
+import { popularMovies, ratedMovies } from './const.js';
+
+popularMovies();
+ratedMovies();
