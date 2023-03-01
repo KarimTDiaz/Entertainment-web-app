@@ -1,1 +1,4 @@
-/* ESTILOS DEL MAIN */
+@use '../mixins/responsive.scss' as*;
+@use '../mixins/flexbox.scss' as*;
+@use '../mixins/hover.scss' as*;
+@use '../mixins/pseudo.scss' as*;
