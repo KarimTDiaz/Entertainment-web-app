@@ -1,5 +1,14 @@
 :root {
-  /* Variables CSS */
+  --bg-color:hsl(223, 30%, 9%);
+  --primary-color:hsl(223, 36%, 14%);
+  --secondary-color:hsl(223, 23%, 46%);
+  --text-color:hsl(0, 0%, 100%);
+  --deco-color:hsl(0, 97%, 63%);
 }
+$bg-color:hsl(223, 30%, 9%);
+$primary-color:hsl(223, 36%, 14%);
+$secondary-color:hsl(223, 23%, 46%);
+$text-color:hsl(0, 0%, 100%);
+$deco-color:hsl(0, 97%, 63%);
 
-/* Variables SASS */
+

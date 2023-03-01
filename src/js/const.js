@@ -1,19 +1,24 @@
 const API_URL = 'https://api.themoviedb.org/3';
 const API_KEY = 'api_key=0950b92375366e54461d6322f5781043';
-const API_POPULARITY =
-  API_URL + '/discover/movie?sort_by=popularity.desc&' + API_KEY;
-const IMG_URL_POSTER = 'https://image.tmdb.org/t/p/w500';
-const API_RATED =
-  API_URL +
-  '/discover/movie/?certification_country=US&certification=R&sort_by=vote_average.desc&' +
-  API_KEY;
-const API_TV = API_URL + '/tv/popular?' + API_KEY + '&language=en-US&page=1';
+
+const URLS = {
+  trendingDayAll: API_URL + '/trending/all/day?' + API_KEY,
+  trendingWeekAll: API_URL + '/trending/week/day?' + API_KEY,
+  trendingWeekMovie: API_URL + '/trending/movie/week?' + API_KEY,
+  trendingWeekTv: API_URL + '/trending/tv/week?' + API_KEY,
+  popularMovies: API_URL + '/movie/popular?' + API_KEY,
+  popularTv: API_URL + '/tv/popular?' + API_KEY,
+  topRatedMovies: API_URL + '/movie/top_rated?' + API_KEY,
+  topRatedTv: API_URL + '/tv/top_rated?' + API_KEY,
+  upComingMovies: API_URL + '/movie/upcoming?' + API_KEY
+};
 
 const fetchData = async url => {
   const response = await fetch(url);
   const data = await response.json();
   return data;
 };
+
 const createDivMovie = movies => {
   console.log(movies);
   const fragment = document.createDocumentFragment();
@@ -33,12 +38,12 @@ const lookRated = movies => {
 };
 
 const popularMovies = async popularMovies => {
-  const data = await fetchData(API_POPULARITY);
+  const data = await fetchData(URLS.upComingMovies);
   createDivMovie(data);
 };
 
 const ratedMovies = async ratedMovies => {
-  const data = await fetchData(API_TV);
+  const data = await fetchData(URLS.upComingMovies);
   lookRated(data);
 };
 
