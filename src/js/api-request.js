@@ -13,4 +13,55 @@ const URLS = {
   upComingMovies: API_URL + '/movie/upcoming?' + API_KEY
 };
 
-export { API_KEY, API_URL, URLS };
+const URLS__MOVIES = [
+  {
+    link: API_URL + '/trending/movie/week?' + API_KEY,
+    title: 'Trending',
+    type: 'Movies'
+  },
+  {
+    link: API_URL + '/movie/popular?' + API_KEY,
+    title: 'Popular',
+    type: 'Movies'
+  },
+  {
+    link: API_URL + '/movie/top_rated?' + API_KEY,
+    title: 'Top Rated',
+    type: 'Movies'
+  },
+  {
+    link: API_URL + '/movie/now_playing?' + API_KEY,
+    title: 'Now Playing',
+    type: 'Movies'
+  },
+  {
+    link: API_URL + '/movie/upcoming?' + API_KEY,
+    title: 'Upcoming',
+    type: 'Movies'
+  }
+];
+
+const URLS__SERIES = [
+  {
+    link: API_URL + '/trending/tv/week?' + API_KEY,
+    title: 'Trending',
+    type: 'TV Series'
+  },
+  {
+    link: API_URL + '/tv/popular?' + API_KEY,
+    title: 'Popular',
+    type: 'TV Series'
+  },
+  {
+    link: API_URL + '/tv/popular?' + API_KEY,
+    title: 'Top Rated',
+    type: 'TV Series'
+  },
+  {
+    link: API_URL + '/tv/on_the_air?' + API_KEY,
+    title: 'On Air',
+    type: 'TV Series'
+  }
+];
+
+export { API_KEY, API_URL, URLS__MOVIES, URLS__SERIES, URLS };

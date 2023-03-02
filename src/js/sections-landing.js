@@ -1,5 +1,11 @@
 import { fetchData, createElement } from './utils.js';
-import { API_KEY, API_URL, URLS } from './api-request.js';
+import {
+  API_KEY,
+  API_URL,
+  URLS,
+  URLS__MOVIES,
+  URLS__SERIES
+} from './api-request.js';
 import { landingMoviesContainer } from './trending-slider.js';
 
 const sectionsArray = ['popularMovies', 'topRatedMovies', 'upComingMovies'];
@@ -49,12 +55,13 @@ const createGallerySections = sections => {
       'icon--media',
       'assets/icon-category-movie.svg'
     );
+
     const galleryInfoMedia = createElement('p', 'text', 'x', 'Movie');
     const galleryItemTitle = createElement(
       'h3',
       'title',
       'title--gallery',
-      sections[index].title
+      sections[index].title ? sections[index].title : sections[index].name
     );
     galleryInfo.append(galleryInfoTop);
     galleryInfoTop.append(
@@ -70,14 +77,14 @@ const createGallerySections = sections => {
   landingMoviesContainer.append(fragmentSection);
 };
 
-const allSectionsRequest = async section => {
-  const trendingMovies = await fetchData(URLS.popularMovies);
+const allSectionsMoviesRequest = async section => {
+  const trendingMovies = await fetchData(URLS[section]);
   createGallerySections(trendingMovies.results);
 };
-const sectionsbucle = sections => {
-  sections.forEach(section => {
-    allSectionsRequest(section);
+const sectionsBucle = sections => {
+  sections.forEach(async section => {
+    await allSectionsMoviesRequest(section);
   });
 };
 
-export { sectionsArray, sectionsbucle };
+export { sectionsArray, sectionsBucle };

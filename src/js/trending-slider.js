@@ -1,5 +1,11 @@
 import { fetchData, createElement } from './utils.js';
-import { API_KEY, API_URL, URLS } from './api-request.js';
+import {
+  API_KEY,
+  API_URL,
+  URLS,
+  URLS__MOVIES,
+  URLS__SERIES
+} from './api-request.js';
 
 const landingMoviesContainer = document.getElementById(
   'movies-landing-container'
@@ -67,9 +73,10 @@ const createTrendingSlider = trendingMovies => {
   landingMoviesContainer.append(fragment);
 };
 
-const allTrendingRequest = async content => {
-  const trendingMovies = await fetchData(URLS.trendingWeekMovie);
+const trendingMoviesRequest = async content => {
+  const trendingMovies = await fetchData(URLS__MOVIES[0].link);
+  console.log(trendingMovies.results);
   createTrendingSlider(trendingMovies.results);
 };
 
-export { allTrendingRequest, landingMoviesContainer };
+export { trendingMoviesRequest, landingMoviesContainer };

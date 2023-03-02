@@ -18,10 +18,10 @@
     &__item{
     position: relative;
     width: 350px;
-    height: 29vh;
+    height: 250px;
     margin-bottom: 1rem;
     border-radius: 10px;
-        background-size: cover;
+    background-size: cover;
     &::after{
         @include pseudo(100%,100%){
             background-color:hsla(0, 0%, 0%, 0.406);
