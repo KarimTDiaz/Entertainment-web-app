@@ -7,8 +7,10 @@
     display: grid;
     grid-template-columns: repeat(2,1fr);
     gap: 1rem;
+    @include responsive(laptop){
+        grid-template-columns: repeat(4,1fr);
+    }
     &__item{
-      
     }
     &__image{
         border-radius: 5px;
@@ -16,6 +18,11 @@
         object-position: left;
         min-height: 125px;
         max-height:100px ;
+        @include responsive(laptop){
+            width: 300px;
+            min-height: 200px;
+        max-height:150px ;
+        }
     }
     &__info{
         &-top{

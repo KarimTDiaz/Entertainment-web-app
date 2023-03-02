@@ -14,7 +14,7 @@ const createTrendingSlider = trendingMovies => {
   const trendingButtonMedia = createElement(
     'p',
     'button',
-    'button--movie',
+    'button--media',
     'MOVIES'
   );
   const trendingButtonSeeAll = createElement(
@@ -68,7 +68,6 @@ const createTrendingSlider = trendingMovies => {
 };
 
 const allTrendingRequest = async content => {
-  console.log(content);
   const trendingMovies = await fetchData(URLS.trendingWeekMovie);
   createTrendingSlider(trendingMovies.results);
 };
