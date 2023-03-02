@@ -2,9 +2,20 @@
 
 // import catImage from '../assets/images/cat.jpeg'
 import '../scss/styles.scss';
-import { trendingMoviesRequest } from './trending-slider.js';
-import { sectionsBucle, sectionsArray } from './sections-landing';
-import { URLS__MOVIES, URLS__SERIES, API_URL, API_KEY } from './api-request.js';
+import { createTrendingSlider } from './trending-slider.js';
+import { createGallerySections } from './sections-landing';
+import { getAllMoviesData, getAllSeriesData } from './api-request.js';
 
-trendingMoviesRequest();
-sectionsBucle(sectionsArray);
+window.addEventListener('load', async () => {
+  const allMoviesData = await getAllMoviesData();
+  const allSeriesData = await getAllSeriesData();
+  createTrendingSlider(allMoviesData[0].results);
+  allMoviesData.slice(1).forEach(movie => {
+    createGallerySections(movie.results);
+  });
+  createTrendingSlider(allSeriesData[0].results);
+
+  allSeriesData.slice(1).forEach(serie => {
+    createGallerySections(serie.results);
+  });
+});

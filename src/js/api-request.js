@@ -1,3 +1,5 @@
+import { fetchData } from './utils';
+
 const API_URL = 'https://api.themoviedb.org/3';
 const API_KEY = 'api_key=0950b92375366e54461d6322f5781043';
 
@@ -13,7 +15,7 @@ const URLS = {
   upComingMovies: API_URL + '/movie/upcoming?' + API_KEY
 };
 
-const URLS__MOVIES = [
+const URLS_MOVIES = [
   {
     link: API_URL + '/trending/movie/week?' + API_KEY,
     title: 'Trending',
@@ -41,7 +43,7 @@ const URLS__MOVIES = [
   }
 ];
 
-const URLS__SERIES = [
+const URLS_SERIES = [
   {
     link: API_URL + '/trending/tv/week?' + API_KEY,
     title: 'Trending',
@@ -53,7 +55,7 @@ const URLS__SERIES = [
     type: 'TV Series'
   },
   {
-    link: API_URL + '/tv/popular?' + API_KEY,
+    link: API_URL + '/tv/top_rated?' + API_KEY,
     title: 'Top Rated',
     type: 'TV Series'
   },
@@ -64,4 +66,18 @@ const URLS__SERIES = [
   }
 ];
 
-export { API_KEY, API_URL, URLS__MOVIES, URLS__SERIES, URLS };
+const getAllMoviesData = async () => {
+  const allMoviesPromises = await Promise.all(
+    URLS_MOVIES.map(obj => fetchData(obj.link))
+  );
+  return allMoviesPromises;
+};
+
+const getAllSeriesData = async () => {
+  const allSeriesPromises = await Promise.all(
+    URLS_SERIES.map(obj => fetchData(obj.link))
+  );
+  return allSeriesPromises;
+};
+
+export { getAllMoviesData, getAllSeriesData };

@@ -1,11 +1,4 @@
 import { fetchData, createElement } from './utils.js';
-import {
-  API_KEY,
-  API_URL,
-  URLS,
-  URLS__MOVIES,
-  URLS__SERIES
-} from './api-request.js';
 
 const landingMoviesContainer = document.getElementById(
   'movies-landing-container'
@@ -46,7 +39,9 @@ const createTrendingSlider = trendingMovies => {
       'p',
       'text',
       'x',
-      movie.release_date.slice(0, 4)
+      movie.release_date
+        ? movie.release_date.slice(0, 4)
+        : movie.first_air_date.slice(0, 4)
     );
     const trendingMediaIcon = createElement(
       'img',
@@ -60,7 +55,7 @@ const createTrendingSlider = trendingMovies => {
       'h3',
       'title',
       'title--small',
-      movie.title
+      movie.title ? movie.title : movie.name
     );
     trendingInfo.append(trendingYear, trendingMediaIcon, trendingMedia);
     trendingInfoContainer.append(trendingInfo, trendingTitle);
@@ -73,10 +68,10 @@ const createTrendingSlider = trendingMovies => {
   landingMoviesContainer.append(fragment);
 };
 
-const trendingMoviesRequest = async content => {
-  const trendingMovies = await fetchData(URLS__MOVIES[0].link);
-  console.log(trendingMovies.results);
-  createTrendingSlider(trendingMovies.results);
-};
+// const trendingMoviesRequest = async content => {
+//   const trendingMovies = await fetchData(URLS_MOVIES[0].link);
+//   console.log(trendingMovies.results);
+//   createTrendingSlider(trendingMovies.results);
+// };
 
-export { trendingMoviesRequest, landingMoviesContainer };
+export { landingMoviesContainer, createTrendingSlider };

@@ -1,11 +1,5 @@
 import { fetchData, createElement } from './utils.js';
-import {
-  API_KEY,
-  API_URL,
-  URLS,
-  URLS__MOVIES,
-  URLS__SERIES
-} from './api-request.js';
+
 import { landingMoviesContainer } from './trending-slider.js';
 
 const sectionsArray = ['popularMovies', 'topRatedMovies', 'upComingMovies'];
@@ -77,14 +71,14 @@ const createGallerySections = sections => {
   landingMoviesContainer.append(fragmentSection);
 };
 
-const allSectionsMoviesRequest = async section => {
-  const trendingMovies = await fetchData(URLS[section]);
-  createGallerySections(trendingMovies.results);
-};
-const sectionsBucle = sections => {
-  sections.forEach(async section => {
-    await allSectionsMoviesRequest(section);
-  });
-};
+// const allSectionsMoviesRequest = async section => {
+//   const trendingMovies = await fetchData(URLS[section]);
+//   createGallerySections(trendingMovies.results);
+// };
+// const sectionsBucle = sections => {
+//   sections.forEach(async section => {
+//     await allSectionsMoviesRequest(section);
+//   });
+// };
 
-export { sectionsArray, sectionsBucle };
+export { createGallerySections };
