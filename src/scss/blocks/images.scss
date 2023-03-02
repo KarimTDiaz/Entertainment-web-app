@@ -2,3 +2,11 @@
 @use '../mixins/flexbox.scss' as*;
 @use '../mixins/hover.scss' as*;
 @use '../mixins/pseudo.scss' as*;
+
+.image{
+    &--profile{
+        width: 30px;
+        border: 1px solid var(--secondary-color);
+        border-radius: 50%;
+    }
+}

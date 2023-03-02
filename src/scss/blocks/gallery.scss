@@ -1,0 +1,26 @@
+@use '../mixins/responsive.scss' as*;
+@use '../mixins/flexbox.scss' as*;
+@use '../mixins/hover.scss' as*;
+@use '../mixins/pseudo.scss' as*;
+
+.gallery{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 1rem;
+    &__item{
+      
+    }
+    &__image{
+        border-radius: 5px;
+        object-fit: cover;
+        object-position: left;
+        min-height: 125px;
+        max-height:100px ;
+    }
+    &__info{
+        &-top{
+            @include flexbox(flex,row,nowrap,left,center);
+            gap: 1rem;
+        }
+    }
+}

@@ -2,3 +2,45 @@
 @use '../mixins/flexbox.scss' as*;
 @use '../mixins/hover.scss' as*;
 @use '../mixins/pseudo.scss' as*;
+
+.trending{
+    overflow-x: scroll;
+    overflow-y: hidden;
+&__top{
+    @include flexbox(flex,row,nowrap,space-between,center);
+    
+}
+    &__slider{
+        display: flex;
+        gap: 1rem;
+        width: fit-content;
+    }
+    &__item{
+    position: relative;
+    width: 350px;
+    height: 29vh;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+        background-size: cover;
+    &::after{
+        @include pseudo(100%,100%){
+            background-color:hsla(0, 0%, 0%, 0.406);
+            top: 0;
+        }
+    }
+    @include responsive(laptop){
+        width: 500px;
+    }
+    }
+    &__info{
+        z-index: 100;
+    position: absolute;
+    top: 40%;
+    left: 5%;
+    &-top{
+        @include flexbox(flex,row,nowrap,center,center);
+        gap: 1rem;
+    }
+    }
+}
+

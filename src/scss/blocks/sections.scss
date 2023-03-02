@@ -3,11 +3,9 @@
 @use '../mixins/hover.scss' as*;
 @use '../mixins/pseudo.scss' as*;
 
-.icon{
-    &--search{
-        position: absolute;
-        top: 25%;
-        left: 3%;
-        width: 25px;
+.section{
+    &__top{
+        @include flexbox(flex,row,nowrap,space-between,center);
     }
+    
 }

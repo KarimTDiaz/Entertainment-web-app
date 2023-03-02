@@ -1,0 +1,24 @@
+@use '../mixins/responsive.scss' as*;
+@use '../mixins/flexbox.scss' as*;
+@use '../mixins/hover.scss' as*;
+@use '../mixins/pseudo.scss' as*;
+
+.search{
+    position: relative;
+    margin-bottom: 2rem;
+    &__field{
+        position: relative;
+        left: 2%;
+        width: 90%;
+        padding: 1rem 2rem 1rem 3rem;
+        background-color: transparent;
+        color: var(--text-color);
+        border: none;
+        border-bottom:1px solid var(--secondary-color);
+        &:focus{
+            outline: none;
+            caret-color: var(--deco-color);
+            border-bottom:1px solid var(--deco-color);
+        }
+    }
+}

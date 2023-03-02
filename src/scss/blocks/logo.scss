@@ -2,3 +2,7 @@
 @use '../mixins/flexbox.scss' as*;
 @use '../mixins/hover.scss' as*;
 @use '../mixins/pseudo.scss' as*;
+
+.logo{
+    width:30px;
+}

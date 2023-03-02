@@ -6,4 +6,12 @@
 html {
 }
 body {
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem;
+    font-family: var(--primary-font);
+    font-weight: 300;
+    background-color: var(--bg-color);
+    color: var(--text-color);
 }

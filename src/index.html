@@ -19,14 +19,72 @@
           <li class="menu__item"><img src="assets/icon-nav-home.svg" alt="Icono Home" class="menu__link"></li>
           <li class="menu__item"><img src="assets/icon-nav-movies.svg" alt="Icono movies" class="menu__link"></li>
           <li class="menu__item"><img src="assets/icon-nav-tv-series.svg" alt="Icono TV" class="menu__link"></li>
+          <li class="menu__item"><img src="assets/icon-nav-bookmark.svg" alt="Icono guardar" class="menu__link"></li>
         </ul>
         <img src="assets/image-avatar.png" alt="Imagen de perfil" class="image image--profile">
       </div>
     </header>
     <main class="main">
+      <div class="search">
+        <img class="icon icon--search" src="assets/icon-search.svg" alt="Icono de lupa">
+      <input type="text" name="film" class="search__field" placeholder="Search for movies or TV series">
+    </div>
+    <div id="movies-landing-container" class="landing-container"></div>
+    <!-- <section class="trending">
+
+      <div class="trending__top">
+        <h2 class="title">Trending</h2>
+        <p class="button button--movie">MOVIES</p>
+        <a href="" class="button button--see-all">SEE MORE</a>
+      </div>
       
+      <div id="trending-all" class="trending__slider">
 
-
+        <div class="trending__item">
+          <img src="assets/icon-bookmark-empty.svg" alt="Icono de guardar" class="bookmark">
+        <div class="trending__info">
+          <div class="trending__info-top">
+            <p class="text">2019</p>
+            <img src="assets/icon-category-movie.svg" alt="" class="icon icon--media">
+            <p class="text">Movie</p>
+          </div>
+          <h3 class="title title--small">A man call otto</h3>
+        </div>
+        </div>
+        </div>
+      </div>
+    </section> -->
+    <section class="section section--landing">
+      <div class="section__top">
+        <h2 class="title">Popular</h2>
+        <p class="button button--series">SERIES</p>
+        <a href="" class="button button--see-all">SEE MORE</a>
+      </div>
+      <div class="gallery">
+        <div class="gallery__item">
+          <img src="https://image.tmdb.org/t/p/original//hegMHNsxYGlGgVgaGz9FqxPqImr.jpg" alt="" class="gallery__image">
+          <div class="gallery__info">
+            <div class="gallery__info-top">
+              <p class="text">2019</p>
+              <img src="assets/icon-category-movie.svg" alt="" class="icon icon--media">
+              <p class="text">Movie</p>
+            </div>
+            <h3 class="title title--gallery">A man call otto</h3>
+          </div>
+        </div>
+        <div class="gallery__item">
+          <img src="https://image.tmdb.org/t/p/original//hegMHNsxYGlGgVgaGz9FqxPqImr.jpg" alt="" class="gallery__image">
+          <div class="gallery__info">
+            <div class="gallery__info-top">
+              <p class="text">2019</p>
+              <img src="assets/icon-category-movie.svg" alt="" class="icon icon--media">
+              <p class="text">Movie</p>
+            </div>
+            <h3 class="title title--gallery">A man call otto</h3>
+          </div>
+        </div>
+      </div>
+    </section>
     </main>
     <footer class="footer"></footer>
     <script type="module" src="./js/index.js"></script>

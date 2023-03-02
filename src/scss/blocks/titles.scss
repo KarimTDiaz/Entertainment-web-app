@@ -2,3 +2,14 @@
 @use '../mixins/flexbox.scss' as*;
 @use '../mixins/hover.scss' as*;
 @use '../mixins/pseudo.scss' as*;
+
+.title{
+    font-weight: 300;
+    &--small{
+        position: absolute;
+        top: 1rem;
+        width: 180%;
+        font-size: var(--text-l);
+        font-weight: 500;
+    }
+}

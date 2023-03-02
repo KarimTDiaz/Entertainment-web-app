@@ -3,11 +3,10 @@
 @use '../mixins/hover.scss' as*;
 @use '../mixins/pseudo.scss' as*;
 
-.icon{
-    &--search{
-        position: absolute;
-        top: 25%;
-        left: 3%;
-        width: 25px;
-    }
+.bookmark{
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    z-index: 100;
+    width: 1rem;
 }

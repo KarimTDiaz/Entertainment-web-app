@@ -2,8 +2,8 @@
 
 // import catImage from '../assets/images/cat.jpeg'
 import '../scss/styles.scss';
+import { allTrendingRequest } from './trending-slider.js';
+import { sectionsbucle, sectionsArray } from './sections-landing';
 
-import { popularMovies, ratedMovies } from './const.js';
-
-popularMovies();
-ratedMovies();
+allTrendingRequest();
+sectionsbucle(sectionsArray);
