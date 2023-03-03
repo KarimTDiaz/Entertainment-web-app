@@ -20,12 +20,13 @@
     width: 350px;
     height: 250px;
     margin-bottom: 1rem;
-    border-radius: 10px;
+    border-radius: 12px;
     background-size: cover;
     &::after{
         @include pseudo(100%,100%){
             background-color:hsla(0, 0%, 0%, 0.406);
             top: 0;
+            border-radius: 12px;
         }
     }
     @include responsive(laptop){

@@ -12,7 +12,7 @@ const createElement = (
 ) => {
   const newElement = document.createElement(element);
   newElement.classList.add(className, className2);
-  newElement.dataset.country = dataset;
+  newElement.dataset.item = dataset;
   if (element !== 'img') {
     newElement.textContent = typeContent;
   } else {

@@ -1,0 +1,66 @@
+@use '../mixins/responsive.scss' as*;
+@use '../mixins/flexbox.scss' as*;
+@use '../mixins/hover.scss' as*;
+@use '../mixins/pseudo.scss' as*;
+
+
+.modal{
+    position: relative;
+    z-index: 1000;
+    max-width: 100vw;
+    height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background-color: var(--bg-color);
+    transform: scale(1);
+    transition-duration: 1s;  
+    display: none;
+    &__image-container{
+        margin-left: auto;
+    margin-right: auto;
+        width: 12rem;
+    }
+    &__info{
+        &-list{
+            @include flexbox(flex,row,nowrap,space-between,center);
+        }
+        &-genres{
+            text-align: left;
+            &-list{
+                @include flexbox(flex,row,nowrap,start,center);
+                gap: 1rem;
+            }
+        }
+    }
+   
+}
+
+.synopsys{
+    text-align: left;
+}
+.casts{
+    text-align: left;
+    &__list{
+        @include flexbox(flex,row,wrap,left,center);
+        gap: 10px;
+        &-item{
+           
+        }
+        }
+        
+    }
+
+.modal--show {
+transform: scale(1);
+transition-duration: 1s;
+}
+
+
+.rating{
+    &__text{
+        margin: 0;
+        font-size: 2.5rem;
+        font-weight: 500;
+    }
+}

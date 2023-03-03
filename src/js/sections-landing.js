@@ -1,11 +1,9 @@
-import { fetchData, createElement } from './utils.js';
-
+import { createElement } from './utils.js';
 import { landingMoviesContainer } from './trending-slider.js';
-
-const sectionsArray = ['popularMovies', 'topRatedMovies', 'upComingMovies'];
+import { mediaMovieIcon, mediaTvIcon } from './images.js';
 const numberOfGalleryItems = 8;
 
-const createGallerySections = sections => {
+const createGallerySections = (sections, title, media) => {
   const fragmentSection = document.createDocumentFragment();
   const sectionLanding = createElement(
     'section',
@@ -13,17 +11,18 @@ const createGallerySections = sections => {
     'section--landing'
   );
   const sectionLandingTop = createElement('div', 'section__top');
-  const sectionLandingTitle = createElement('h2', 'title', 'x', 'Popular');
+  const sectionLandingTitle = createElement('h2', 'title', 'x', title);
   const sectionLandingButtonMedia = createElement(
     'p',
     'button',
     'button--media',
-    'MOVIES'
+    media
   );
   const sectionLandingButtonSeeAll = createElement(
     'a',
     'button',
-    'button--see-all'
+    'button--see-all',
+    'SEE ALL'
   );
   sectionLandingTop.append(
     sectionLandingTitle,
@@ -33,7 +32,13 @@ const createGallerySections = sections => {
   const gallery = createElement('div', 'gallery');
 
   for (let index = 0; index < numberOfGalleryItems; index++) {
-    const galleryItem = createElement('div', 'gallery__item');
+    const galleryItem = createElement(
+      'div',
+      'gallery__item',
+      'x',
+      '',
+      sections[index].id
+    );
     const galleryImage = createElement(
       'img',
       'gallery__image',
@@ -47,10 +52,10 @@ const createGallerySections = sections => {
       'img',
       'icon',
       'icon--media',
-      'assets/icon-category-movie.svg'
+      sections[index].title ? mediaMovieIcon : mediaTvIcon
     );
 
-    const galleryInfoMedia = createElement('p', 'text', 'x', 'Movie');
+    const galleryInfoMedia = createElement('p', 'text', 'x', media);
     const galleryItemTitle = createElement(
       'h3',
       'title',
@@ -70,15 +75,5 @@ const createGallerySections = sections => {
   fragmentSection.append(sectionLanding);
   landingMoviesContainer.append(fragmentSection);
 };
-
-// const allSectionsMoviesRequest = async section => {
-//   const trendingMovies = await fetchData(URLS[section]);
-//   createGallerySections(trendingMovies.results);
-// };
-// const sectionsBucle = sections => {
-//   sections.forEach(async section => {
-//     await allSectionsMoviesRequest(section);
-//   });
-// };
 
 export { createGallerySections };

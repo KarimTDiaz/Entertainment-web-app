@@ -68,10 +68,4 @@ const createTrendingSlider = trendingMovies => {
   landingMoviesContainer.append(fragment);
 };
 
-// const trendingMoviesRequest = async content => {
-//   const trendingMovies = await fetchData(URLS_MOVIES[0].link);
-//   console.log(trendingMovies.results);
-//   createTrendingSlider(trendingMovies.results);
-// };
-
 export { landingMoviesContainer, createTrendingSlider };

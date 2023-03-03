@@ -80,4 +80,11 @@ const getAllSeriesData = async () => {
   return allSeriesPromises;
 };
 
-export { getAllMoviesData, getAllSeriesData };
+export {
+  getAllMoviesData,
+  getAllSeriesData,
+  URLS_MOVIES,
+  URLS_SERIES,
+  API_URL,
+  API_KEY
+};

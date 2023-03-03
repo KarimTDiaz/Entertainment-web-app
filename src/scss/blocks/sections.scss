@@ -4,6 +4,7 @@
 @use '../mixins/pseudo.scss' as*;
 
 .section{
+    margin-bottom: 2rem;
     &__top{
         @include flexbox(flex,row,nowrap,space-between,center);
     }
