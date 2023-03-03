@@ -7,6 +7,7 @@ import { createGallerySections } from './sections-landing';
 import {
   getAllMoviesData,
   getAllSeriesData,
+  getMovieDetails,
   URLS_MOVIES,
   URLS_SERIES
 } from './api-request.js';
@@ -20,7 +21,8 @@ window.addEventListener('load', async () => {
     createGallerySections(
       data.results,
       URLS_MOVIES.slice(1)[index].title,
-      URLS_MOVIES[index].type
+      URLS_MOVIES[index].type,
+      'movie'
     );
   });
   createTrendingSlider(allSeriesData[0].results);
@@ -29,21 +31,13 @@ window.addEventListener('load', async () => {
     createGallerySections(
       serie.results,
       URLS_SERIES.slice(1)[index].title,
-      URLS_SERIES[index].type
+      URLS_SERIES[index].type,
+      'tv'
     );
   });
 });
 
 document.body.addEventListener('click', async ev => {
-  const allMoviesData = await getAllMoviesData();
-  let dataset = ev.target.dataset.item;
-  allMoviesData.forEach((data, index) => {
-    data.results.forEach((result, index) => {
-      if (result.id === dataset) {
-        console.log();
-      }
-    });
-  });
-
-  itemData(ev.target.dataset.item);
+  const { data, dataCast } = await getMovieDetails(ev.target.dataset.item);
+  itemData(data, dataCast.cast.slice(0, 15));
 });

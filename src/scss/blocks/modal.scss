@@ -8,14 +8,12 @@
     position: relative;
     z-index: 1000;
     max-width: 100vw;
-    height: 100vh;
-    margin-left: auto;
-    margin-right: auto;
+    height: 100%;
     text-align: center;
     background-color: var(--bg-color);
     transform: scale(1);
     transition-duration: 1s;  
-    display: none;
+    
     &__image-container{
         margin-left: auto;
     margin-right: auto;

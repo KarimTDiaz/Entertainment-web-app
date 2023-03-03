@@ -7,54 +7,48 @@ const landingMoviesContainer = document.getElementById(
 const createTrendingSlider = trendingMovies => {
   const fragment = document.createDocumentFragment();
 
-  const trendingSection = createElement('div', 'trending');
-  const trendingTop = createElement('div', 'trending__top');
-  const trendingTitle = createElement('h2', 'title', 'x', 'Trending');
+  const trendingSection = createElement('div', ['trending']);
+  const trendingTop = createElement('div', ['trending__top']);
+  const trendingTitle = createElement('h2', ['title'], 'Trending');
   const trendingButtonMedia = createElement(
     'p',
-    'button',
-    'button--media',
+    ['button', 'button--media'],
     'MOVIES'
   );
   const trendingButtonSeeAll = createElement(
     'a',
-    'button',
-    'button--see-all',
+    ['button', 'button--see-all'],
     'SEE ALL'
   );
   trendingTop.append(trendingTitle, trendingButtonMedia, trendingButtonSeeAll);
-  const trendingSlider = createElement('div', 'trending__slider');
+  const trendingSlider = createElement('div', ['trending__slider']);
   trendingMovies.forEach((movie, index) => {
-    const trendingItem = createElement('div', 'trending__item');
+    const trendingItem = createElement('div', ['trending__item']);
     trendingItem.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`;
     const trendingItemImage = createElement(
       'img',
-      'bookmark',
-      'x',
+      ['bookmark'],
       'assets/icon-bookmark-empty.svg'
     );
-    const trendingInfoContainer = createElement('div', 'trending__info');
-    const trendingInfo = createElement('div', 'trending__info-top');
+    const trendingInfoContainer = createElement('div', ['trending__info']);
+    const trendingInfo = createElement('div', ['trending__info-top']);
     const trendingYear = createElement(
       'p',
-      'text',
-      'x',
+      ['text'],
       movie.release_date
         ? movie.release_date.slice(0, 4)
         : movie.first_air_date.slice(0, 4)
     );
     const trendingMediaIcon = createElement(
       'img',
-      'icon',
-      'icon--media',
+      ['icon', 'icon--media'],
       'assets/icon-category-movie.svg'
     );
-    const trendingMedia = createElement('p', 'text', 'x', 'Movie');
+    const trendingMedia = createElement('p', ['text'], 'Movie');
 
     const trendingTitle = createElement(
       'h3',
-      'title',
-      'title--small',
+      ['title', 'title--small'],
       movie.title ? movie.title : movie.name
     );
     trendingInfo.append(trendingYear, trendingMediaIcon, trendingMedia);
