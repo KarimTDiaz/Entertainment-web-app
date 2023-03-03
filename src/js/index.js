@@ -3,7 +3,7 @@
 // import catImage from '../assets/images/cat.jpeg'
 import '../scss/styles.scss';
 import { createTrendingSlider } from './trending-slider.js';
-import { createGallerySections } from './sections-landing';
+import { createGallerySections, landingShow } from './sections-landing';
 import {
   getAllMoviesData,
   getAllSeriesData,
@@ -11,12 +11,13 @@ import {
   URLS_MOVIES,
   URLS_SERIES
 } from './api-request.js';
-import { createModalInfo, itemData } from './modal.js';
+import { itemData, modalShow } from './modal.js';
+import { landingMoviesContainer } from './const.js';
 
 window.addEventListener('load', async () => {
   const allMoviesData = await getAllMoviesData();
   const allSeriesData = await getAllSeriesData();
-  createTrendingSlider(allMoviesData[0].results);
+  createTrendingSlider(allMoviesData[0].results, 'movie');
   allMoviesData.slice(1).forEach((data, index) => {
     createGallerySections(
       data.results,
@@ -25,7 +26,7 @@ window.addEventListener('load', async () => {
       'movie'
     );
   });
-  createTrendingSlider(allSeriesData[0].results);
+  createTrendingSlider(allSeriesData[0].results, 'tv');
 
   allSeriesData.slice(1).forEach((serie, index) => {
     createGallerySections(
@@ -37,7 +38,13 @@ window.addEventListener('load', async () => {
   });
 });
 
-document.body.addEventListener('click', async ev => {
-  const { data, dataCast } = await getMovieDetails(ev.target.dataset.item);
+landingMoviesContainer.addEventListener('click', async ev => {
+  if (ev.target.dataset.item === 'undefined') return;
+  const { data, dataCast } = await getMovieDetails(
+    ev.target.dataset.item,
+    ev.target.dataset.type
+  );
+  modalShow();
+  landingShow();
   itemData(data, dataCast.cast.slice(0, 15));
 });

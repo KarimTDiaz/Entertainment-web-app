@@ -1,8 +1,12 @@
 import { createElement } from './utils.js';
-import { landingMoviesContainer } from './trending-slider.js';
+import { landingMoviesContainer } from './const.js';
 import { mediaMovieIcon, mediaTvIcon } from './images.js';
 import { IMAGE_URL } from './api-request.js';
 const numberOfGalleryItems = 8;
+
+const landingShow = () => {
+  landingMoviesContainer.classList.add('landing-container--unshow');
+};
 
 const createGallerySections = (sections, title, media, dataType) => {
   const fragmentSection = document.createDocumentFragment();
@@ -34,7 +38,8 @@ const createGallerySections = (sections, title, media, dataType) => {
       'div',
       ['gallery__item'],
       '',
-      sections[index].id
+      sections[index].id,
+      dataType
     );
     const galleryImage = createElement(
       'img',
@@ -70,4 +75,4 @@ const createGallerySections = (sections, title, media, dataType) => {
   landingMoviesContainer.append(fragmentSection);
 };
 
-export { createGallerySections };
+export { createGallerySections, landingShow };

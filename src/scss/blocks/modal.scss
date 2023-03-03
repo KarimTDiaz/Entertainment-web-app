@@ -5,6 +5,7 @@
 
 
 .modal{
+    display: none;
     position: relative;
     z-index: 1000;
     max-width: 100vw;
@@ -13,7 +14,9 @@
     background-color: var(--bg-color);
     transform: scale(1);
     transition-duration: 1s;  
-    
+    &--show{
+        display: block;
+    }
     &__image-container{
         margin-left: auto;
     margin-right: auto;
@@ -22,13 +25,6 @@
     &__info{
         &-list{
             @include flexbox(flex,row,nowrap,space-between,center);
-        }
-        &-genres{
-            text-align: left;
-            &-list{
-                @include flexbox(flex,row,nowrap,start,center);
-                gap: 1rem;
-            }
         }
     }
    
@@ -49,6 +45,7 @@
         
     }
 
+
 .modal--show {
 transform: scale(1);
 transition-duration: 1s;
@@ -60,5 +57,13 @@ transition-duration: 1s;
         margin: 0;
         font-size: 2.5rem;
         font-weight: 500;
+    }
+}
+
+.genres{
+    text-align: left;
+    &__list{
+        @include flexbox(flex,row,wrap,left,center);
+        gap: 10px;
     }
 }

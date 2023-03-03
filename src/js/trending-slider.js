@@ -1,10 +1,8 @@
-import { fetchData, createElement } from './utils.js';
+import { createElement } from './utils.js';
+import { landingMoviesContainer } from './const.js';
+import { IMAGE_URL } from './api-request.js';
 
-const landingMoviesContainer = document.getElementById(
-  'movies-landing-container'
-);
-
-const createTrendingSlider = trendingMovies => {
+const createTrendingSlider = (trendingMovies, dataType) => {
   const fragment = document.createDocumentFragment();
 
   const trendingSection = createElement('div', ['trending']);
@@ -23,7 +21,13 @@ const createTrendingSlider = trendingMovies => {
   trendingTop.append(trendingTitle, trendingButtonMedia, trendingButtonSeeAll);
   const trendingSlider = createElement('div', ['trending__slider']);
   trendingMovies.forEach((movie, index) => {
-    const trendingItem = createElement('div', ['trending__item']);
+    const trendingItem = createElement(
+      'div',
+      ['trending__item'],
+      '',
+      movie.id,
+      dataType
+    );
     trendingItem.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`;
     const trendingItemImage = createElement(
       'img',
@@ -62,4 +66,4 @@ const createTrendingSlider = trendingMovies => {
   landingMoviesContainer.append(fragment);
 };
 
-export { landingMoviesContainer, createTrendingSlider };
+export { createTrendingSlider };

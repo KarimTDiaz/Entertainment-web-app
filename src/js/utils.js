@@ -3,10 +3,11 @@ const fetchData = async url => {
   const data = await response.json();
   return data;
 };
-const createElement = (element, classes, typeContent, dataset) => {
+const createElement = (element, classes, typeContent, dataset, dataset2) => {
   const newElement = document.createElement(element);
   newElement.classList.add(...classes);
   newElement.dataset.item = dataset;
+  newElement.dataset.type = dataset2;
   if (element !== 'img') {
     newElement.textContent = typeContent;
   } else {
