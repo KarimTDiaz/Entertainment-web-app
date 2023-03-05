@@ -2,3 +2,26 @@
 @use '../mixins/flexbox.scss' as*;
 @use '../mixins/hover.scss' as*;
 @use '../mixins/pseudo.scss' as*;
+
+.item-bordered{
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    height: 30px;
+    padding: 0 0.5rem;
+    border: 1px solid var(--text-color);
+}
+
+.buttons-pages{
+    @include flexbox(flex,row,nowrap,center,center);
+    gap: 10px;
+    
+}
+
+.button{
+    cursor: pointer;
+    text-align: center;
+    width: 10rem;
+    padding: 1rem 0;
+    border: 1px solid var(--text-color);
+}

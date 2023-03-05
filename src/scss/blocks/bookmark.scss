@@ -1,12 +1,29 @@
-@use '../mixins/responsive.scss' as*;
-@use '../mixins/flexbox.scss' as*;
-@use '../mixins/hover.scss' as*;
-@use '../mixins/pseudo.scss' as*;
+@use '../mixins/responsive.scss' as *;
+@use '../mixins/flexbox.scss' as *;
+@use '../mixins/hover.scss' as *;
+@use '../mixins/pseudo.scss' as *;
 
-.bookmark{
+.bookmark {
+  position: relative;
+
+  &--image {
     position: absolute;
     top: 5%;
     right: 5%;
+    width: 1.2rem;
     z-index: 100;
+  }
+}
+
+.bookmark-gallery {
+  position: relative;
+  &--image {
+    position: absolute;
+    top: -115px;
+    right: 5%;
     width: 1rem;
+    @include responsive(laptop) {
+      top: -180px;
+    }
+  }
 }

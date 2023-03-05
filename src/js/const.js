@@ -1,5 +1,5 @@
 const landingMoviesContainer = document.getElementById(
   'movies-landing-container'
 );
-
-export { landingMoviesContainer };
+const crossElement = document.getElementById('icon-cross');
+export { landingMoviesContainer, crossElement };

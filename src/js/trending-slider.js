@@ -1,9 +1,11 @@
 import { createElement } from './utils.js';
 import { landingMoviesContainer } from './const.js';
 import { IMAGE_URL } from './api-request.js';
+import { mediaMovieIcon, mediaTvIcon } from './images.js';
 
-const createTrendingSlider = (trendingMovies, dataType) => {
+const createTrendingSlider = (trendingMovies, dataType, dataCategory) => {
   const fragment = document.createDocumentFragment();
+  console.log(dataType);
 
   const trendingSection = createElement('div', ['trending']);
   const trendingTop = createElement('div', ['trending__top']);
@@ -15,8 +17,11 @@ const createTrendingSlider = (trendingMovies, dataType) => {
   );
   const trendingButtonSeeAll = createElement(
     'a',
-    ['button', 'button--see-all'],
-    'SEE ALL'
+    ['button', `button--see-all-${dataType}`],
+    'SEE ALL',
+    'undefined',
+    'undefined',
+    dataCategory
   );
   trendingTop.append(trendingTitle, trendingButtonMedia, trendingButtonSeeAll);
   const trendingSlider = createElement('div', ['trending__slider']);
@@ -28,12 +33,14 @@ const createTrendingSlider = (trendingMovies, dataType) => {
       movie.id,
       dataType
     );
-    trendingItem.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`;
-    const trendingItemImage = createElement(
+    trendingItem.style.backgroundImage = `url(${IMAGE_URL}${movie.backdrop_path})`;
+    const trendingItemBookmarkContainer = createElement('div', ['bookmark']);
+    const trendingItemBookmark = createElement(
       'img',
-      ['bookmark'],
+      ['bookmark--image'],
       'assets/icon-bookmark-empty.svg'
     );
+    trendingItemBookmarkContainer.append(trendingItemBookmark);
     const trendingInfoContainer = createElement('div', ['trending__info']);
     const trendingInfo = createElement('div', ['trending__info-top']);
     const trendingYear = createElement(
@@ -46,18 +53,23 @@ const createTrendingSlider = (trendingMovies, dataType) => {
     const trendingMediaIcon = createElement(
       'img',
       ['icon', 'icon--media'],
-      'assets/icon-category-movie.svg'
+      movie.title ? mediaMovieIcon : mediaTvIcon
     );
-    const trendingMedia = createElement('p', ['text'], 'Movie');
+    const trendingMedia = createElement(
+      'p',
+      ['text'],
+      movie.title ? 'Movies' : 'TV Series'
+    );
 
     const trendingTitle = createElement(
       'h3',
       ['title', 'title--small'],
       movie.title ? movie.title : movie.name
     );
+
     trendingInfo.append(trendingYear, trendingMediaIcon, trendingMedia);
     trendingInfoContainer.append(trendingInfo, trendingTitle);
-    trendingItem.append(trendingItemImage, trendingInfoContainer);
+    trendingItem.append(trendingItemBookmark, trendingInfoContainer);
     trendingSlider.append(trendingItem);
   });
 

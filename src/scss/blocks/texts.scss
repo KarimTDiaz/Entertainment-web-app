@@ -2,3 +2,9 @@
 @use '../mixins/flexbox.scss' as*;
 @use '../mixins/hover.scss' as*;
 @use '../mixins/pseudo.scss' as*;
+
+.text{
+    &--small{
+        font-size: var(--text-xxs);
+    }
+}

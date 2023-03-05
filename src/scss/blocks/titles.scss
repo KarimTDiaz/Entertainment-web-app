@@ -7,11 +7,16 @@
     font-weight: 300;
     &--small{
         position: absolute;
-        top: 1rem;
+        top: 1.5rem;
         width: 180%;
-        font-size: var(--text-l);
+        font-size: var(--text-m);
         font-weight: 500;
+        @include responsive(laptop){
+            top: 1rem;
+            font-size: var(--text-l);
+        }
     }
+
     &--gallery{
         margin: 0;
         pointer-events: none;
@@ -20,4 +25,14 @@
         margin: 10px;
         font-size: 2rem;
     }
+    &--info-list{
+        font-size:var(--text-m);
+        font-weight: 500;
+        color: var(--grey-items);
+    }
+}
+
+.tagline{
+   
+        color: var(--grey-items);
 }

@@ -4,7 +4,7 @@ const API_URL = 'https://api.themoviedb.org/3';
 const API_KEY = '?api_key=0950b92375366e54461d6322f5781043';
 const IMAGE_URL = 'https://image.tmdb.org/t/p/original/';
 
-const URLS_MOVIES = [
+const URLS_MOVIE = [
   {
     link: API_URL + '/trending/movie/week' + API_KEY,
     title: 'Trending',
@@ -32,7 +32,7 @@ const URLS_MOVIES = [
   }
 ];
 
-const URLS_SERIES = [
+const URLS_TV = [
   {
     link: API_URL + '/trending/tv/week' + API_KEY,
     title: 'Trending',
@@ -55,22 +55,21 @@ const URLS_SERIES = [
   }
 ];
 
-const getAllMoviesData = async () => {
+const getAllMoviesData = async counter => {
   const allMoviesPromises = await Promise.all(
-    URLS_MOVIES.map(obj => fetchData(obj.link))
+    URLS_MOVIE.map(obj => fetchData(obj.link + `&page=${counter}`))
   );
   return allMoviesPromises;
 };
 
-const getAllSeriesData = async () => {
+const getAllSeriesData = async counter => {
   const allSeriesPromises = await Promise.all(
-    URLS_SERIES.map(obj => fetchData(obj.link))
+    URLS_TV.map(obj => fetchData(obj.link + `&page=${counter}`))
   );
   return allSeriesPromises;
 };
 
 const getMovieDetails = async (id, media) => {
-  console.log(id);
   const data = await fetchData(API_URL + `/${media}/` + id + API_KEY);
   const dataCast = await fetchData(
     API_URL + `/${media}/` + id + '/credits' + API_KEY
@@ -78,12 +77,19 @@ const getMovieDetails = async (id, media) => {
   return { data, dataCast };
 };
 
+const getGenres = async media => {
+  const genres = await fetchData(API_URL + `/genre/${media}/list` + API_KEY);
+  console.log(genres);
+  return { genres };
+};
+
 export {
   getAllMoviesData,
   getAllSeriesData,
   getMovieDetails,
-  URLS_MOVIES,
-  URLS_SERIES,
+  getGenres,
+  URLS_MOVIE,
+  URLS_TV,
   API_URL,
   API_KEY,
   IMAGE_URL

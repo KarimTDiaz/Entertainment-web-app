@@ -1,5 +1,6 @@
 import { createElement, fillElement } from './utils.js';
 import { IMAGE_URL } from './api-request.js';
+
 const modalElement = document.getElementById('modal');
 const modalImageElement = document.getElementById('modal-image');
 const infoTitleElement = document.getElementById('info-title');
@@ -18,7 +19,11 @@ const infoGenresElement = document.getElementById('genre');
 const infoCastElement = document.getElementById('casts');
 
 const modalShow = () => {
-  modalElement.classList.add('modal--show');
+  if (modalElement.classList.contains('modal--show')) {
+    modalElement.classList.remove('modal--show');
+  } else {
+    modalElement.classList.add('modal--show');
+  }
 };
 const createModalInfo = (item, itemCast) => {
   infoGenresElement.innerHTML = '';
@@ -27,7 +32,7 @@ const createModalInfo = (item, itemCast) => {
   const modalObj = [
     {
       element: infoTitleElement,
-      info: item.title
+      info: item.title ? item.title : item.name
     },
     {
       element: infoTagLineElement,

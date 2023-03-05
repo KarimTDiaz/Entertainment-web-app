@@ -15,10 +15,10 @@
     <header class="header">
       <div class="header__top">
         <img src="assets/logo.svg" alt="logo" class="logo">
-        <ul class="menu">
+        <ul id="menu" class="menu">
           <li class="menu__item"><img src="assets/icon-nav-home.svg" alt="Icono Home" class="menu__link"></li>
-          <li class="menu__item"><img src="assets/icon-nav-movies.svg" alt="Icono movies" class="menu__link"></li>
-          <li class="menu__item"><img src="assets/icon-nav-tv-series.svg" alt="Icono TV" class="menu__link"></li>
+          <li  class="menu__item"><img id="menu-movies" src="assets/icon-nav-movies.svg" alt="Icono movies" class="menu__link"></li>
+          <li  class="menu__item"><img id="menu-tv" src="assets/icon-nav-tv-series.svg" alt="Icono TV" class="menu__link"></li>
           <li class="menu__item"><img src="assets/icon-nav-bookmark.svg" alt="Icono guardar" class="menu__link"></li>
         </ul>
         <img src="assets/image-avatar.png" alt="Imagen de perfil" class="image image--profile">
@@ -93,12 +93,8 @@
     
     <div id="modal" class="modal">
 
-      <img src="assets/icon-cross.svg" alt="" class="icon icon--cross">
-
-      <div class="modal__image-container">
-        <img id="modal-image" src="https://image.tmdb.org/t/p/original//dm06L9pxDOL9jNSK4Cb6y139rrG.jpg" alt="" class="modal__image">
-      </div>
-
+      <img id="icon-cross" src="assets/icon-cross.svg" alt="" class="icon icon--cross">
+        <img id="modal-image" src="" alt="" class="modal__image">
       <div class="modal__info">
         <h2 id="info-title" class="title title--modal"></h2>
         <p id="info-tagline" class="tagline"></p>
@@ -108,19 +104,19 @@
         <ul class="modal__info-list">
           <li class="modal__info-list-item">
             <h3 id="first-list-item" class="title title--info-list"></h3>
-            <p id="first-list-item-text" class="text"></p>
+            <p id="first-list-item-text" class="text text--small"></p>
           </li>
           <li class="modal__info-list-item">
             <h3 id="second-list-item" class="title title--info-list">Language</h3>
-            <p id="second-list-item-text" class="text"></p>
+            <p id="second-list-item-text" class="text text--small"></p>
           </li>
           <li class="modal__info-list-item">
             <h3 id="third-list-item" class="title title--info-list">Year</h3>
-            <p id="third-list-item-text" class="text"></p>
+            <p id="third-list-item-text" class="text text--small"></p>
           </li>
           <li class="modal__info-list-item">
             <h3 class="title title--info-list">Status</h3>
-            <p id="fourth-list-item-text" class="text"></p>
+            <p id="fourth-list-item-text" class="text text--small"></p>
           </li>
         </ul>
         <div class="genres">
@@ -140,6 +136,30 @@
         </div>
       </div>
     </div>
+
+    <div id="see-all" class="see-all">
+      <div class="see-all__top">
+        <h2 id="see-all-title" class="title title--see-all"></h2>
+        <div id="back-button" class="button button-back">BACK</div>
+      </div>
+      
+      <div id="gallery-see-all" class="gallery">
+      </div>
+      <div id="buttons-pages" class="buttons-pages">
+        <div id="previous" class="button button--previous">PREVIOUS</div>
+        <div id="buton-page" class="button button--info-page">page 1 of 32000</div>
+        <div id="next" class="button button--next">NEXT</div>
+      </div>
+      </div>
+    </div>
+    <div id="genres-page" class="genres-page">
+      <div id="gallery-genres" class="gallery gallery--genres">
+        
+      </div>
+
+    </div>
+
+
     <script type="module" src="./js/index.js"></script>
   </body>
 </html>

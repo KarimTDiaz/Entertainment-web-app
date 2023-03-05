@@ -1,69 +1,97 @@
-@use '../mixins/responsive.scss' as*;
-@use '../mixins/flexbox.scss' as*;
-@use '../mixins/hover.scss' as*;
-@use '../mixins/pseudo.scss' as*;
+@use '../mixins/responsive.scss' as *;
+@use '../mixins/flexbox.scss' as *;
+@use '../mixins/hover.scss' as *;
+@use '../mixins/pseudo.scss' as *;
 
-
-.modal{
+.modal {
+  display: none;
+  position: relative;
+  z-index: 1000;
+  max-width: 100vw;
+  height: 100%;
+  text-align: center;
+  background-color: var(--bg-color);
+  transform: scale(1);
+  transition-duration: 1s;
+  @include responsive(laptop){
+    @include flexbox(flex,row,nowrap,space-between,center);
     display: none;
-    position: relative;
-    z-index: 1000;
-    max-width: 100vw;
-    height: 100%;
-    text-align: center;
-    background-color: var(--bg-color);
-    transform: scale(1);
-    transition-duration: 1s;  
-    &--show{
-        display: block;
-    }
-    &__image-container{
-        margin-left: auto;
+    max-width: 1000px;
+    margin-left: auto;
     margin-right: auto;
+  }
+  &--show {
+    display: block;
+  }
+  &__image{
+    width: 12rem;
+    margin-left: auto;
+    margin-right: auto;
+    @include responsive(laptop){
+        width: 22rem;
+        margin: 0
+      }
+  }
+  &__image-container {
+    width: 12rem;
+    margin-left: auto;
+    margin-right: auto;
+    @include responsive(laptop){
         width: 12rem;
-    }
-    &__info{
-        &-list{
-            @include flexbox(flex,row,nowrap,space-between,center);
-        }
-    }
-   
-}
-
-.synopsys{
-    text-align: left;
-}
-.casts{
-    text-align: left;
-    &__list{
-        @include flexbox(flex,row,wrap,left,center);
-        gap: 10px;
-        &-item{
-           
-        }
-        }
+        margin: 0
         
+      }
+  }
+  &__info {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    @include responsive(laptop){
+        position: absolute;
+        top: 0;
+        left: 25vw;
+        width: 50%;
+        text-align: left
     }
+    &-list {
+      @include flexbox(flex, row, nowrap, space-between, center);
+      &-item {
+        text-align: left;
+      }
+    }
+  }
+}
 
+.synopsys {
+  text-align: left;
+}
+.casts {
+  text-align: left;
+  &__list {
+    @include flexbox(flex, row, wrap, left, center);
+    gap: 10px;
+    &-item {
+    }
+  }
+}
 
 .modal--show {
-transform: scale(1);
-transition-duration: 1s;
+  transform: scale(1);
+  transition-duration: 1s;
 }
 
-
-.rating{
-    &__text{
-        margin: 0;
-        font-size: 2.5rem;
-        font-weight: 500;
-    }
+.rating {
+  &__text {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 500;
+  }
 }
 
-.genres{
-    text-align: left;
-    &__list{
-        @include flexbox(flex,row,wrap,left,center);
-        gap: 10px;
-    }
+.genres {
+  text-align: left;
+  &__list {
+    @include flexbox(flex, row, wrap, left, center);
+    gap: 10px;
+  }
 }

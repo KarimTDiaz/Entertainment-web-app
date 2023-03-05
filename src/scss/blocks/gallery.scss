@@ -5,33 +5,57 @@
 
 .gallery{
     display: grid;
-    grid-template-columns: repeat(2,1fr);;
-    gap: 1.5rem;
-    @include responsive(laptop){
-        grid-template-columns: repeat(4,1fr);
-    }
-    &__item{
-        margin-bottom: 2rem;
-    }
-    &__image{
-        border-radius: 5px;
-        object-fit: cover;
-        object-position: left;
-        width: 100%;
-        min-height: 125px;
-        max-height:125px ;
-        pointer-events: none;
+        grid-template-columns: repeat(2,1fr);
+        gap: 1.5rem;
         @include responsive(laptop){
+            grid-template-columns: repeat(4,1fr);
+        }
+    
+        &__item{
+            margin-bottom: 2rem;
+            @include responsive(laptop){
+                &--5{
+                    grid-column:1/3 ;
+                }
+                &--6{
+                    grid-column:3/5 ;
+                }
+            }
+           
+        }
+        &__image{
+            border-radius: 5px;
+            object-fit: cover;
+            object-position: left;
             width: 100%;
-            min-height: 190px;
-            max-height:190px ;
+            min-height: 125px;
+            max-height:125px ;
+            pointer-events: none;
+            @include responsive(laptop){
+                width: 100%;
+                min-height: 200px;
+                max-height:200px ;
+            }
         }
-    }
-    &__info{
-        pointer-events: none;
-        &-top{
-            @include flexbox(flex,row,nowrap,left,center);
-            gap: 1rem;
+        &__info{
+            pointer-events: none;
+            &-top{
+                @include flexbox(flex,row,nowrap,left,center);
+                gap: 1rem;
+            }
         }
-    }
+        &--genres{
+            @include responsive(laptop){
+                grid-template-columns: repeat(6, 1fr)
+            }
+            &-item{
+                @include flexbox(flex,column,nowrap,center,center);
+                height: 100px;
+                background-color: var(--deco-color);
+                border-radius: 10px;
+            }
+        }
+    
+    
+
 }

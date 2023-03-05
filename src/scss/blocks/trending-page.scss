@@ -17,8 +17,8 @@
     }
     &__item{
     position: relative;
-    width: 350px;
-    height: 250px;
+    width: 300px;
+    height: 150px;
     margin-bottom: 1rem;
     border-radius: 12px;
     background-size: cover;
@@ -31,6 +31,7 @@
     }
     @include responsive(laptop){
         width: 500px;
+        height: 250px;
     }
     }
     &__info{

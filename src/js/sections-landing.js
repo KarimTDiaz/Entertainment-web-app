@@ -2,13 +2,23 @@ import { createElement } from './utils.js';
 import { landingMoviesContainer } from './const.js';
 import { mediaMovieIcon, mediaTvIcon } from './images.js';
 import { IMAGE_URL } from './api-request.js';
-const numberOfGalleryItems = 8;
+const numberOfGalleryItems = 6;
 
 const landingShow = () => {
-  landingMoviesContainer.classList.add('landing-container--unshow');
+  if (landingMoviesContainer.classList.contains('landing-container--unshow')) {
+    landingMoviesContainer.classList.remove('landing-container--unshow');
+  } else {
+    landingMoviesContainer.classList.add('landing-container--unshow');
+  }
 };
 
-const createGallerySections = (sections, title, media, dataType) => {
+const createGallerySections = (
+  sections,
+  title,
+  media,
+  dataType,
+  dataCategory
+) => {
   const fragmentSection = document.createDocumentFragment();
   const sectionLanding = createElement('section', [
     'section',
@@ -23,8 +33,11 @@ const createGallerySections = (sections, title, media, dataType) => {
   );
   const sectionLandingButtonSeeAll = createElement(
     'a',
-    ['button', 'button--see-all'],
-    'SEE ALL'
+    ['button', `button--see-all-${dataType}`],
+    'SEE ALL',
+    'undefined',
+    dataType.toUpperCase(),
+    dataCategory
   );
   sectionLandingTop.append(
     sectionLandingTitle,
@@ -36,7 +49,11 @@ const createGallerySections = (sections, title, media, dataType) => {
   for (let index = 0; index < numberOfGalleryItems; index++) {
     const galleryItem = createElement(
       'div',
-      ['gallery__item'],
+      index === 4
+        ? ['gallery__item--5']
+        : index === 5
+        ? ['gallery__item--6']
+        : ['gallery__item'],
       '',
       sections[index].id,
       dataType
@@ -46,6 +63,16 @@ const createGallerySections = (sections, title, media, dataType) => {
       ['gallery__image'],
       IMAGE_URL + sections[index].backdrop_path
     );
+    const galleryItemBookmarkContainer = createElement('div', [
+      'bookmark-gallery'
+    ]);
+    const galleryItemBookmark = createElement(
+      'img',
+      ['bookmark-gallery--image'],
+      'assets/icon-bookmark-empty.svg'
+    );
+    galleryItemBookmarkContainer.append(galleryItemBookmark);
+
     const galleryInfo = createElement('div', ['gallery__info']);
     const galleryInfoTop = createElement('div', ['gallery__info-top']);
     const galleryInfoYear = createElement('p', ['text'], '2019');
@@ -67,7 +94,12 @@ const createGallerySections = (sections, title, media, dataType) => {
       galleryInfoMediaIcon,
       galleryInfoMedia
     );
-    galleryItem.append(galleryImage, galleryInfo, galleryItemTitle);
+    galleryItem.append(
+      galleryImage,
+      galleryItemBookmarkContainer,
+      galleryInfo,
+      galleryItemTitle
+    );
     gallery.append(galleryItem);
   }
   sectionLanding.append(sectionLandingTop, gallery);
