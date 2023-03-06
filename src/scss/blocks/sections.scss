@@ -6,6 +6,7 @@
 .section{
     margin-bottom: 2rem;
     &__top{
+        position: relative;
         @include flexbox(flex,row,nowrap,space-between,center);
     }
     

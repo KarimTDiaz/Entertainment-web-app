@@ -25,10 +25,16 @@ const createGallerySections = (
     'section--landing'
   ]);
   const sectionLandingTop = createElement('div', ['section__top']);
-  const sectionLandingTitle = createElement('h2', ['title'], title);
+  const sectionLandingTitle = createElement(
+    'h2',
+    ['title', 'title--sections'],
+    title
+  );
   const sectionLandingButtonMedia = createElement(
     'p',
-    ['button', 'button--media'],
+    sections[0].title
+      ? ['button', 'button--media']
+      : ['button', 'button--media', 'button--media-tv'],
     media
   );
   const sectionLandingButtonSeeAll = createElement(
@@ -39,6 +45,7 @@ const createGallerySections = (
     dataType.toUpperCase(),
     dataCategory
   );
+
   sectionLandingTop.append(
     sectionLandingTitle,
     sectionLandingButtonMedia,

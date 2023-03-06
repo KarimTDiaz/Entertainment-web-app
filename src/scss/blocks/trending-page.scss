@@ -8,6 +8,7 @@
     overflow-y: hidden;
 &__top{
     @include flexbox(flex,row,nowrap,space-between,center);
+    position: relative;
     
 }
     &__slider{

@@ -9,11 +9,17 @@ const createTrendingSlider = (trendingMovies, dataType, dataCategory) => {
 
   const trendingSection = createElement('div', ['trending']);
   const trendingTop = createElement('div', ['trending__top']);
-  const trendingTitle = createElement('h2', ['title'], 'Trending');
+  const trendingTitle = createElement(
+    'h2',
+    ['title', 'title--sections'],
+    'Trending'
+  );
   const trendingButtonMedia = createElement(
     'p',
-    ['button', 'button--media'],
-    'MOVIES'
+    trendingMovies[0].title
+      ? ['button', 'button--media']
+      : ['button', 'button--media', 'button--media-tv'],
+    trendingMovies[0].title ? 'Movies' : 'TV Series'
   );
   const trendingButtonSeeAll = createElement(
     'a',
